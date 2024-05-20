@@ -2,11 +2,11 @@ import java.util.Scanner;
 
 public class ContaTerminal {
     public static void main(String[] args)
-        throws Exception {
+        {
         // conhecer e importar a classe scanner
-        Scanner scanner = new Scanner(System.in);
+        try (Scanner scanner = new Scanner(System.in)){
 
-        try {
+
             //exibir as mensagens para o nosso usuário
             System.out.println("Por favor, digite o número da conta: ");
             int numeroConta = scanner.nextInt();
@@ -23,19 +23,15 @@ public class ContaTerminal {
             double saldoConta = scanner.nextDouble();
 
             //exibir a mensagem conta criada
-            System.out.println("Conta criada com sucesso! ");
-            System.out.println("Dados da conta:");
-            System.out.println("Número da conta: " + numeroConta);
-            System.out.println("Número da agência: " + numeroAgencia);
-            System.out.println("Nome do cliente" + nomeCliente);
-            System.out.println("Saldo da conta: " + saldoConta);
+            String mensagem = String.format(
+                    "Olá %s, obrigado por criar uma conta em nosso banco, sua agencia é %s, conta %d e seu saldo %.2f já está disponível para saque",
+                    nomeCliente, numeroAgencia, numeroConta, saldoConta
+            );
+            System.out.println(mensagem);
         } catch (NumberFormatException e) {
             System.out.println("Erro: Você digitou um número inválido. Por favor, tente novamente.");
         } catch (Exception e) {
             System.out.println("Erro: Ocorreu um problema inesperado. Por favor, tente novamente.");
-        } finally {
-            //Fechar o scanner
-            scanner.close();
+        }
         }
     }
-}
