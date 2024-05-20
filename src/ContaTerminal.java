@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class ContaTerminal {
     public static void main(String[] args)
         throws Exception {
-        //TODO conhecer e importar a classe scanner
+        // conhecer e importar a classe scanner
         Scanner scanner = new Scanner(System.in);
 
         try {
